@@ -1,0 +1,21 @@
+server:
+  port: 8082
+  forward-headers-strategy: framework
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9090/realms/demo
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:9090/realms/demo
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: spring
+            scope:
+              - openid
